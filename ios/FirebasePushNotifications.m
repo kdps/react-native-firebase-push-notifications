@@ -454,9 +454,10 @@ RCT_EXPORT_METHOD(jsInitialised:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
 }
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)   
              
 - (BOOL)isIOS89 {
-    return SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"12.99");
+    return SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(@"12.99");
     //return floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max;
 }
 
