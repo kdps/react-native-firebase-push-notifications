@@ -147,7 +147,12 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
     // Pass them over to the RNFirebaseMessaging handler instead
     if (userInfo[@"aps"] && ((NSDictionary*)userInfo[@"aps"]).count == 1 && userInfo[@"aps"][@"content-available"]) {
         [[RNFirebaseMessaging instance] didReceiveRemoteNotification:userInfo];
-        completionHandler(UIBackgroundFetchResultNoData);
+        
+        
+        // App Crash
+        //completionHandler(UIBackgroundFetchResultNoData);
+        
+        
         return;
     }
 
