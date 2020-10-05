@@ -173,7 +173,10 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         // - foreground notifications also go through willPresentNotification
         // - background notification presses also go through didReceiveNotificationResponse
         // This prevents duplicate messages from hitting the JS app
-        completionHandler(UIBackgroundFetchResultNoData);
+        
+        // App Crash On IOS 14
+        //completionHandler(UIBackgroundFetchResultNoData);
+        
         return;
     }
 
