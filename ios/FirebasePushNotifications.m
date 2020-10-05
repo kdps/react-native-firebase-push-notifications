@@ -150,9 +150,9 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         
         // App Crash On IOS 14
         // https://github.com/vector-im/element-ios/pull/1561/files
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completionHandler(UIBackgroundFetchResultNoData);
-        });
+        //dispatch_async(dispatch_get_main_queue(), ^{
+        //    completionHandler(UIBackgroundFetchResultNoData);
+        //});
         
         return;
     }
@@ -177,9 +177,9 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         
         // App Crash On IOS 14
         // https://github.com/vector-im/element-ios/pull/1561/files
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completionHandler(UIBackgroundFetchResultNoData);
-        });
+        //dispatch_async(dispatch_get_main_queue(), ^{
+            //completionHandler(UIBackgroundFetchResultNoData);
+        //});
         
         return;
     }
