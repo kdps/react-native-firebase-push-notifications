@@ -148,10 +148,11 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
     if (userInfo[@"aps"] && ((NSDictionary*)userInfo[@"aps"]).count == 1 && userInfo[@"aps"][@"content-available"]) {
         [[RNFirebaseMessaging instance] didReceiveRemoteNotification:userInfo];
         
-        
-        // App Crash
-        //completionHandler(UIBackgroundFetchResultNoData);
-        
+        // App Crash On IOS 14
+        // https://github.com/vector-im/element-ios/pull/1561/files
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandler(UIBackgroundFetchResultNoData);
+        });
         
         return;
     }
@@ -175,7 +176,10 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         // This prevents duplicate messages from hitting the JS app
         
         // App Crash On IOS 14
-        //completionHandler(UIBackgroundFetchResultNoData);
+        // https://github.com/vector-im/element-ios/pull/1561/files
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandler(UIBackgroundFetchResultNoData);
+        });
         
         return;
     }
