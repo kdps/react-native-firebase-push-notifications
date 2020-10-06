@@ -5,6 +5,7 @@
 #import "RNFirebaseMessaging.h"
 #import "RNFirebaseUtil.h"
 #import <React/RCTUtils.h>
+#import <FirebaseAuth/FIRAuth.h>
 
 // For iOS 10 we need to implement UNUserNotificationCenterDelegate to receive display
 // notifications via APNS
@@ -150,9 +151,11 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         
         // App Crash On IOS 14
         // https://github.com/vector-im/element-ios/pull/1561/files
-        //dispatch_async(dispatch_get_main_queue(), ^{
-        //    completionHandler(UIBackgroundFetchResultNoData);
-        //});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[FIRAuth auth] canHandleNotification:userInfo]) {
+                completionHandler(UIBackgroundFetchResultNoData);
+            }
+        });
         
         return;
     }
@@ -177,9 +180,11 @@ RCT_EXPORT_METHOD(complete:(NSString*)handlerKey fetchResult:(UIBackgroundFetchR
         
         // App Crash On IOS 14
         // https://github.com/vector-im/element-ios/pull/1561/files
-        //dispatch_async(dispatch_get_main_queue(), ^{
-            //completionHandler(UIBackgroundFetchResultNoData);
-        //});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[FIRAuth auth] canHandleNotification:userInfo]) {
+                completionHandler(UIBackgroundFetchResultNoData);
+            }
+        });
         
         return;
     }
