@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
 
   s.dependency "React"
   s.dependency "Firebase/Core", '~> 6.30.0'
+  s.dependency "Firebase/Auth", '~> 6.30.0'
   s.dependency "Firebase/Messaging", '~> 6.30.0'
   # ...
   # s.dependency "..."
