@@ -110,17 +110,17 @@ class Notifications extends NativeEventEmitter {
   }
 
   getBadge = () => {
-    if (Platform.OS === "ios") {
+    //if (Platform.OS === "ios") {
       return FirebaseNotifications.getBadge()
-    }
-    return null
+    //}
+    //return null
   }
 
   setBadge = async num => {
-    if (Platform.OS === "ios") {
+    //if (Platform.OS === "ios") {
       return await FirebaseNotifications.setBadge(num)
-    }
-    return null
+    //}
+    //return null
   }
 
   requestPermission = async () => {
